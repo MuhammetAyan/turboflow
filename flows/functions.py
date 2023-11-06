@@ -19,7 +19,7 @@ def create(**kwargs):
         raise NotImplementedError()
 
 def test(**kwargs):
-    from _core.io import OnpremIO
+    from tf_core.io import OnpremIO
     db = json.load(open("db.json", mode="r"))
     for flow in db['flows']:
         if flow['name'] == kwargs['name']:
@@ -27,7 +27,7 @@ def test(**kwargs):
                 print(io.isdir(flow['address']))
 
 def download_dags(**kwargs):
-    from _core.io import OnpremIO, GoogleCloudIO
+    from tf_core.io import OnpremIO, GoogleCloudIO
     db = json.load(open("db.json", mode="r"))
     for flow in db['flows']:
         if flow['name'] == kwargs['name']:
@@ -45,7 +45,7 @@ def download_dags(**kwargs):
                     )
 
 # def upload_dags(**kwargs):
-#     from _core.io import OnpremIO
+#     from tf_core.io import OnpremIO
 #     db = json.load(open("db.json", mode="r"))
 #     for flow in db['flows']:
 #         if flow['name'] == kwargs['name']:
