@@ -1,5 +1,6 @@
 import argparse
 import importlib
+from . import IApp
 
 
 def run(applications):
@@ -13,7 +14,7 @@ def run(applications):
     # Creating command set
     commands_map = {}
     for app_str in applications:
-        app = importlib.import_module(app_str)
+        app: IApp = importlib.import_module(app_str)
         commands_map.update(app.commands_map)
         app.add_parsers(subparsers)
 
